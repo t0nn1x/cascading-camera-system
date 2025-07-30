@@ -155,4 +155,19 @@ class CameraSystem {
 
         return $total;
     }
+
+    /**
+     * Returns only active cameras with their people count
+     * 
+     * @return array<string, int> Active cameras mapped to their people count
+     */
+    public function getActiveCameras(): array {
+        $active = [];
+        foreach ($this->cameras as $camera) {
+            if ($camera->isActive) {
+                $active[$camera->name] = $camera->peopleCount;
+            }
+        }
+        return $active;
+    }
 }
